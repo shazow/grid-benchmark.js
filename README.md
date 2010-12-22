@@ -1,6 +1,19 @@
+There are many ways to represent a bitmap-style grid in Javascript.
+
+I compiled a collection of implementations.
+
+Some of which were obvious but I thought were inefficient (array full of arrays, turned out it is the fastest overall).
+Some of which I suspected would be most efficient (grid_array_1d, turned out it is mediocre).
+Some of which I had no idea how they would compare (hash-based, might actually be better for sparse grids).
+Some of which I was hoping would yield surprising results (grid_canvas, completely disappointed).
+
+Needless to say, the results were very surprising to me.
+
+If there are any corrections or additions, please fork and request a pull.
+
 ## Results
 
-Macbook Pro, Chrome 8.0.552.231
+YMMV, but I found generally the same trends across machines and browsers. These particular results are from my Macbook Pro on Chrome 8.0.552.231.
 
 size = [1200,800]
 

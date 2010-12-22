@@ -1,0 +1,117 @@
+<html>
+<head>
+<style type="text/css">
+    body {
+        font-family: sans-serif;
+        color: #444;
+        padding: 20px;
+    }
+    h1 {
+        color: #242;
+        font-size: 30px;
+    }
+    input {
+        font-size: 5em;
+    }
+    #results h2 {
+        font-size: 18px;
+        margin-bottom: 5px;
+        color: #111;
+    }
+    #results strong {
+        font-size: 14px;
+
+        float: left;
+        display: block;
+        width: 60px;
+        padding-left: 1em;
+    }
+</style>
+</head>
+<body>
+
+    <h1>Grid Datastructures Benchmark
+    </h1>
+        <input type="button" value="Run" onclick="run_benchmark([1200,800]);" />
+    <div id="results"></div>
+
+<script type="text/javascript" src="structs.js"></script>
+<script type="text/javascript">
+
+    var t = document.getElementById("results");
+    function log(s) {
+        t.innerHTML += s + "\r";
+    }
+
+    function benchmark(name, fn, disabled) {
+        if(disabled) return;
+        try {
+            var now = +new Date();
+            fn();
+            var elapsed = new Date() - now;
+            log('<strong>' + name + ':</strong> \t' + elapsed + 'ms<br />');
+        } catch(e) {
+            log('<strong>' + name + ':</strong> \t failed: ' + e +'<br />');
+        }
+    }
+
+    function stress_grid_write(g, size) {
+        // Fill it with 1's
+        var w = size[0]-1, h = size[1]-1;
+        for(var x=w; x>=0; x--) {
+            for(var y=h; y>=0; y--) {
+                g.set([x,y], 1);
+            }
+        }
+
+    }
+    function stress_grid_read(g, size) {
+        // Read all the 1's
+        var w = size[0]-1, h = size[1]-1;
+        for(var x=w; x>=0; x--) {
+            for(var y=h; y>=0; y--) {
+                g.get([x,y]);
+            }
+        }
+    }
+
+    function stress_full(grid_class, size) {
+        var a;
+        benchmark('create', function() { a = grid_class(size); });
+        benchmark('write', function() { stress_grid_write(a, size); });
+        benchmark('read', function() { stress_grid_read(a, size); });
+    }
+
+
+    function run_benchmark(size) {
+        var names = [];
+        for(var k in structs) {
+            names.push(k);
+        }
+        names.sort();
+        names.reverse();
+
+        log("<p>Running benchmark on " + names.length + " datastructures with size input: [" + size + "]</p>");
+
+        function run(i) {
+            if(i<0) {
+                log("<p>Done.</p>");
+                return;
+            }
+
+            var k = names[i];
+
+            log('<h2>' + k + '</h2>');
+            setTimeout(function() { 
+                benchmark('total', function() {
+                    stress_full(structs[k], size);
+                });
+
+                setTimeout(function() { run(i-1); }, 1);
+            }, 1);
+        }
+        setTimeout(function() { run(names.length-1); }, 100);
+
+    }
+</script>
+</body></html>

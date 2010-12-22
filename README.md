@@ -9,7 +9,7 @@ Some of which I was hoping would yield surprising results (grid_canvas, complete
 
 Needless to say, the results were very surprising to me.
 
-If there are any corrections or additions, please fork and request a pull.
+If there are any corrections or additions, please fork and request a pull. Excuse the ghetto benchmarking code, I could not find a good standard benchmarking library that did what I needed.
 
 ## Results
 

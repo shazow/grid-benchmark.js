@@ -1,11 +1,13 @@
-There are many ways to represent a bitmap-style grid in Javascript.
+## Motivation
 
-I compiled a collection of implementations.
+Find the fastest way for representing a 2d collision bitmap for a JavaScript game ([LineRage](https://chrome.google.com/webstore/detail/oplmlhhgdcliikihbehklkagmeophnlh)).
 
-Some of which were obvious but I thought were inefficient (array full of arrays, turned out it is the fastest overall).
-Some of which I suspected would be most efficient (grid_array_1d, turned out it is mediocre).
-Some of which I had no idea how they would compare (hash-based, might actually be better for sparse grids).
-Some of which I was hoping would yield surprising results (grid_canvas, completely disappointed).
+There are many ways to represent a bitmap-style grid in Javascript. I compiled a collection of implementations and benchmarked them.
+
+* Some were obvious but I thought were inefficient (array full of arrays, turned out it is the fastest overall despite having to create that many more objects).
+* Some I suspected would be most efficient (grid_array_1d, turned out it is mediocre due to the extra math required for determining the index).
+* Some I had no idea how they would compare (hash-based, almost competes with the best option, might actually be better for sparse grids).
+* Some I was hoping would yield surprising results (grid_canvas, completely disappointing).
 
 Needless to say, the results were very surprising to me.
 

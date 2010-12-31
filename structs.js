@@ -147,10 +147,13 @@ structs.grid_canvas = function(size) {
 
     var ctx = canvas.getContext("2d");
 
+    var data = ctx.createImageData(1, 1);
+    data[3] = 255;
+
     return {
         set: function(pos, value) {
-            ctx.fillStyle = 'rgb(' + value +',0,0)';
-            ctx.fillRect(pos[0], pos[1], 2, 2);
+            data[0] = value;
+            ctx.putImageData(data, pos[0], pos[1]);
         },
         get: function(pos) {
             return ctx.getImageData(pos[0], pos[1], 1, 1).data[0];

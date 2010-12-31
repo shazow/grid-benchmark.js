@@ -13,6 +13,8 @@ Needless to say, the results were very surprising to me.
 
 If there are any corrections or additions, please fork and request a pull. Excuse the ghetto benchmarking code, I could not find a good standard benchmarking library that did what I needed.
 
+**Update**: Anyone want to port the benchmarks to [Benchmark.js](https://github.com/mathiasbynens/benchmark.js)? ([Issue 1](https://github.com/shazow/grid-benchmark.js/issues#issue/1))
+
 ## Results
 
 YMMV, but I found generally the same trends across machines and browsers. These particular results are from my Macbook Pro on Chrome 8.0.552.231.

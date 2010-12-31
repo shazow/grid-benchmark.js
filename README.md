@@ -2,7 +2,7 @@
 
 ## Motivation
 
-Find the fastest way for representing a 2d collision bitmap for a JavaScript game ([LineRage](https://chrome.google.com/webstore/detail/oplmlhhgdcliikihbehklkagmeophnlh)).
+**Find the fastest way for representing a 2d collision bitmap for a JavaScript game ([LineRage](https://chrome.google.com/webstore/detail/oplmlhhgdcliikihbehklkagmeophnlh)).**
 
 There are many ways to represent a bitmap-style grid in Javascript. I compiled a collection of implementations and benchmarked them.
 

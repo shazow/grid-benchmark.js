@@ -40,19 +40,18 @@ structs.grid_array_2d_lazy = function(size) {
 }
 
 structs.grid_array_1d = function(size) {
-    w = size[0], h = size[1];
+    var w = size[0], h = size[1];
     var a = [];
-    for(var i=w*size[1]; i>=0; i--) {
-        a[i] = 0;
-        break;
+    for(var i=0, ii=w*size[1]; i<ii; i++) {
+        a.push(0);
     }
 
     return {
         set: function(pos, value) {
-            a[pos[0] * w + pos[1]] = value;
+            a[pos[1] * w + pos[0]] = value;
         },
         get: function(pos) {
-            return a[pos[0] * w + pos[1]];
+            return a[pos[1] * w + pos[0]];
         }
     }
 }

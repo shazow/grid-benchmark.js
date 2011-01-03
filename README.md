@@ -23,10 +23,10 @@ size = [1200,800]
 
 ### grid_array_1d
 
-    create: 0ms
-    write: 154ms
-    read: 39ms
-    total: 194ms
+    create: 11ms
+    write: 57ms
+    read: 45ms
+    total: 114ms
 
 
 ### grid_array_1d_bitwise
